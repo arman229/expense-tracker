@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {TransactionsContext} from "./App";
+import {TransactionsContext} from "../App";
 
 export const Transaction = ({transaction}) => {
     const {deleteTransaction}=useContext(TransactionsContext);

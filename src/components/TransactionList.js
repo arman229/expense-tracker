@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {Transaction} from "./Transaction";
-import {TransactionsContext} from "./App";
+import {TransactionsContext} from "../App";
 
 export const TransactioList = () => {
     const {transactions} = useContext(TransactionsContext);

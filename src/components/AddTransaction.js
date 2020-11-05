@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {TransactionsContext} from "./App";
+import {TransactionsContext} from "../App";
 
 export const AddTransaction = () => {
     const {addTransaction} = useContext(TransactionsContext);
@@ -14,6 +14,8 @@ export const AddTransaction = () => {
             text: transactionTitle,
             amount: +amount
         };
+        setTransactionTitle("");
+        setAmount("");
         addTransaction(newTransaction)
     }
 
