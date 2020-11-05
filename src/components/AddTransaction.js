@@ -1,19 +1,19 @@
 import React, {useContext, useState} from "react";
-import {GlobalContext} from "../context/GlobalState";
+import {TransactionsContext} from "./App";
 
 export const AddTransaction = () => {
-    const {addTransaction} = useContext(GlobalContext)
+    const {addTransaction} = useContext(TransactionsContext);
 
-    const [text, setText] = useState("")
-    const [amount, setAmount] = useState(0)
+    const [transactionTitle, setTransactionTitle] = useState("");
+    const [amount, setAmount] = useState(0);
 
     function onSubmit(e) {
         e.preventDefault();
         const newTransaction = {
             id: Math.floor(Math.random() * 10000000),
-            text,
+            text: transactionTitle,
             amount: +amount
-        }
+        };
         addTransaction(newTransaction)
     }
 
@@ -22,7 +22,7 @@ export const AddTransaction = () => {
         <form onSubmit={onSubmit}>
             <div className="form-control">
                 <label htmlFor="text">Text</label>
-                <input type="text" required="required" value={text} onChange={(e) => setText(e.target.value)}
+                <input type="text" required="required" value={transactionTitle} onChange={(e) => setTransactionTitle(e.target.value)}
                        placeholder="Enter text..."/>
             </div>
             <div className="form-control">
@@ -32,7 +32,7 @@ export const AddTransaction = () => {
                 <input required="required" type="number" value={amount} onChange={(e) => setAmount(e.target.value)}
                        placeholder="Enter amount..."/>
             </div>
-            <button className="btn">Add transaction</button>
+            <button type="submit" className="btn">Add transaction</button>
         </form>
     </>
-}
+};
